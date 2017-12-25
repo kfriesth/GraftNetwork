@@ -323,21 +323,25 @@ namespace supernode {
             struct request {
                 std::string Account;
                 std::string Password;
+                uint64_t BlockNum;
 
                 BEGIN_KV_SERIALIZE_MAP()
                     KV_SERIALIZE(Account)
                     KV_SERIALIZE(Password)
+                    KV_SERIALIZE(BlockNum)
                 END_KV_SERIALIZE_MAP()
             };
             struct response {
                 int64_t Result;
                 uint64_t Balance;
                 uint64_t UnlockedBalance;
+                uint64_t BlockNum;
 
                 BEGIN_KV_SERIALIZE_MAP()
                     KV_SERIALIZE(Result)
                     KV_SERIALIZE(Balance)
                     KV_SERIALIZE(UnlockedBalance)
+                    KV_SERIALIZE(BlockNum)
                 END_KV_SERIALIZE_MAP()
             };
         };

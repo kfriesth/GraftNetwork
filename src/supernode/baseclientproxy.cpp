@@ -53,8 +53,11 @@ bool supernode::BaseClientProxy::GetWalletBalance(const supernode::rpc_command::
     }
     try
     {
+        wal->refresh();
         out.Balance = wal->balance();
         out.UnlockedBalance = wal->unlocked_balance();
+        string err;
+        out.BlockNum = wal->get_daemon_blockchain_height(err);
     }
     catch (const std::exception& e)
     {
