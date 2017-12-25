@@ -53,7 +53,8 @@ bool supernode::BaseClientProxy::GetWalletBalance(const supernode::rpc_command::
     }
     try
     {
-        wal->refresh();
+        uint64_t blockFetch = 0;
+        wal->refresh(in.BlockNum, blockFetch);
         out.Balance = wal->balance();
         out.UnlockedBalance = wal->unlocked_balance();
         string err;
