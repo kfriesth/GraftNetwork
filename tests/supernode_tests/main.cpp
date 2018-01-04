@@ -230,7 +230,7 @@ struct Test_RTA_FlowBlockChain : public testing::Test {
 			if(second) swap(wss1, wss2);
 
 
-			Servant = new FSN_Servant_Test(db_path, "localhost:28281", "", true);
+			Servant = new FSN_Servant_Test(db_path, "localhost:28981", "", true);
 			Servant->Set(wallet_root_path + wss1, "", wallet_root_path + wss2, "");
 
 		    // wallet1
@@ -289,8 +289,8 @@ struct Test_RTA_FlowBlockChain : public testing::Test {
 	}
 
 	string IP = "127.0.0.1";;
-	string WalletProxyPort = "7500";;
-	string PosProxyPort = "8500";;
+	string WalletProxyPort = "28900";;
+	string PosProxyPort = "28900";;
 	bool Verbose = true;
 
 	bool Assert(bool bb, const string& str) {
@@ -306,8 +306,8 @@ struct Test_RTA_FlowBlockChain : public testing::Test {
 		rpc_command::POS_SALE::response sale_out;
         sale_in.Amount = 1;
         sale_in.POSSaleDetails = "Some data";
-        sale_in.POSAddress = "T6T2LeLmi6hf58g7MeTA8i4rdbVY8WngXBK3oWS7pjjq9qPbcze1gvV32x7GaHx8uWHQGNFBy1JCY1qBofv56Vwb26Xr998SE";
-				sale_in.POSViewKey = "0ae7176e5332974de64713c329d406956e8ff2fd60c85e7ee6d8c88318111007";
+        sale_in.POSAddress = "T6SFqSGCRvXN2JcQCmRy8J1HPEW38maJnND1eR7New5yTwCugA3ppzFX7jRuXaUm23DNVzc9ycBAVA8VLruFNA6U18yEPW2aC";
+				sale_in.POSViewKey = "d7ad27cd49d48c12b5abf1af1118e029c7759ca73bbaf25168c092d82446cd04";
 
 		unsigned repeatCount = 10;
 
@@ -358,7 +358,7 @@ struct Test_RTA_FlowBlockChain : public testing::Test {
 		pay_in.BlockNum = sale_out.BlockNum;
 		pay_in.PaymentID = sale_out.PaymentID;
 		{
-		string wallet_path = s_TestDataPath + "/test_wallets" + "/stake_wallet";
+		string wallet_path = "/home/ubuntu/projects/supernode/GraftNetwork/build/release/bin/graftwallettest";//s_TestDataPath + "/test_wallets" + "/stake_wallet";
 		tools::GraftWallet wallet(true, false);
 		wallet.load(wallet_path, "");
 		pay_in.Account = epee::string_encoding::base64_encode( wallet.store_keys_graft("", false) );
